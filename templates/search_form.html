@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Search</title>
 </head>
 <body>
-    <form action="/search/" method="get">
+    {% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %}
+    <form action="" method="get">
         <input type="text" name="q">
         <input type="submit" value="Search">
     </form>
-
-    <p>You searched for: <strong>{{ query }}</strong></p>
-
-    {% if books %}
-        <p>Found {{ books|length }} book{{ books|pluralize }}</p>
-        <ul>
-            {% for book in books %}
-                <li>
-                    {{ book.title }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No books matched your search criteria.</p>
-    {% endif %}
-
 </body>
 </html>

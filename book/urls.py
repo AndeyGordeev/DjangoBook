@@ -7,6 +7,5 @@ urlpatterns = [
     url(r'^time/$', views.current_datetime, name='time'),
     url(r'^time/plus/([0-9]{1,2})/$', views.hours_ahead, name='plustime'),
     url(r'^another-time-page/$', views.current_datetime, name='anothertime'),
-    url(r'^search-form/$', views.search_form),
     url(r'^search/$', views.search),
 ]
