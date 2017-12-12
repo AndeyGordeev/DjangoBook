@@ -10,6 +10,9 @@ from DjangoBook import settings
 from book.models import Book
 
 
+def contact_thanks(request):
+    return HttpResponse('Thanks for visiting!')
+
 def contact(request):
     error=[]
     if request.method == 'POST':
@@ -24,10 +27,15 @@ def contact(request):
                 request.POST['subject'],
                 request.POST['message'],
                 request.POST.get('email', settings.EMAIL_HOST_USER),
-                ['prolodgy@yandex.ru'], fail_silently=False,
+                [request.POST['email']], fail_silently=False,
             )
-            return HttpResponse('/contact/thanks/')
-    return render(request, 'contact_form.html', {'error': error})
+            return contact_thanks(request)
+    return render(request, 'contact_form.html', {
+        'error': error,
+        'subject': request.POST.get('subject', ''),
+        'message': request.POST.get('message', ''),
+        'email': request.POST.get('email', ''),
+    })
 
 def search(request):
     error = []

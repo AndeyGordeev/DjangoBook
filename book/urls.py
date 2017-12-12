@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^another-time-page/$', views.current_datetime, name='anothertime'),
     url(r'^search/$', views.search),
     url(r'^contact/$', views.contact),
+    url(r'^contact/thanks/$', views.contact_thanks),
 ]
