@@ -21,7 +21,7 @@ class Author(models.Model):
     salutation = models.CharField(max_length=10)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=40)
-    email = models.EmailField()
+    email = models.EmailField('e-mail',blank=True)
     headshot = models.ImageField(upload_to='img')
 
     def __unicode__(self):
@@ -31,7 +31,7 @@ class Book(models.Model):
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher, on_delete=models.DO_NOTHING)
-    publication_date = models.DateField()
+    publication_date = models.DateField(blank=True, null=True)
 
     def __unicode__(self):
         return self.title
