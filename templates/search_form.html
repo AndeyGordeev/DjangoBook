@@ -4,7 +4,11 @@
 </head>
 <body>
     {% if error %}
-        <p style="color: red;">Please submit a search term.</p>
+        <p style="color: red;">
+            {% for errors in error %}
+                <li>{{ errors }}</li>
+            {% endfor %}
+        </p>
     {% endif %}
     <form action="" method="get">
         <input type="text" name="q">

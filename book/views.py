@@ -9,11 +9,13 @@ from book.models import Book
 
 
 def search(request):
-    error = False
+    error = []
     if 'q' in request.GET:
         q = request.GET['q']
         if not q:
-            error = True
+            error.append('Enter a search term.')
+        elif len(q) > 20:
+            error.append('Please enter ar most 20 characters.')
         else:
             books = Book.objects.filter(title__icontains=q)
             return render_to_response('search_result.html',
