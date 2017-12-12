@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, Http404
 import datetime
@@ -5,8 +6,28 @@ import datetime
 from django.template import Template, Context
 from django.template.loader import get_template
 
+from DjangoBook import settings
 from book.models import Book
 
+
+def contact(request):
+    error=[]
+    if request.method == 'POST':
+        if not request.POST.get('subject', ''):
+            error.append('Enter a subject.')
+        if not request.POST.get('message', ''):
+            error.append('Enter a message.')
+        if request.POST.get('email') and '@' not in request.POST['email']:
+            error.append('Enter a valid e-mail address.')
+        if not error:
+            send_mail(
+                request.POST['subject'],
+                request.POST['message'],
+                request.POST.get('email', settings.EMAIL_HOST_USER),
+                ['prolodgy@yandex.ru'], fail_silently=False,
+            )
+            return HttpResponse('/contact/thanks/')
+    return render(request, 'contact_form.html', {'error': error})
 
 def search(request):
     error = []

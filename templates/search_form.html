@@ -1,8 +1,5 @@
-<html>
-<head>
-    <title>Search</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block errors %}
     {% if error %}
         <p style="color: red;">
             {% for errors in error %}
@@ -10,9 +7,10 @@
             {% endfor %}
         </p>
     {% endif %}
+{% endblock %}
+{% block content %}
     <form action="" method="get">
         <input type="text" name="q">
         <input type="submit" value="Search">
     </form>
-</body>
-</html>
+{% endblock %}

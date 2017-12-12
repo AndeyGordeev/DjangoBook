@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact us{% endblock %}
+
+{% block errors %}
+    {% if errors %}
+        <ul>
+            {% for errors in error %}
+                <li>
+                    {{ errors }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form action="/contact/" method="post">
+        {% csrf_token %}
+        <p>Subject: <input type="text" name="subject"></p>
+        <p>Your e-mail (optional): <input type="text" name="enail"></p>
+        <p>Message: <textarea name="message" rows="10" cols="50"></textarea></p>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

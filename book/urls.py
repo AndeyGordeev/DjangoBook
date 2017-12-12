@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^time/plus/([0-9]{1,2})/$', views.hours_ahead, name='plustime'),
     url(r'^another-time-page/$', views.current_datetime, name='anothertime'),
     url(r'^search/$', views.search),
+    url(r'^contact/$', views.contact),
 ]

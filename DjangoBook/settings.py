@@ -43,7 +43,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.russia.RussiaMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -129,3 +128,12 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/static/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "prolodgy@yandex.ru"
+EMAIL_HOST_PASSWORD = "moyazayaka21juliazayac21"
+EMAIL_USE_SSL = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
